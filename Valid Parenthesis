@@ -1,0 +1,18 @@
+class Solution(object):
+    def isValid(self, s):
+        valid_paranthesis={"(":")","[":"]","{":"}"}
+        open_bracket=[]
+        for bracket in s:
+            if bracket in ["(","[","{"]:
+                open_bracket.append(bracket)
+            else:
+                if open_bracket:
+                    closing_bracket=valid_paranthesis[open_bracket.pop()]
+                    if closing_bracket!=bracket:
+                        return False
+                else:
+                    return False
+        if open_bracket:
+            return False
+        else:
+            return True
