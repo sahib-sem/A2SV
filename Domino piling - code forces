@@ -1,0 +1,6 @@
+m_n=input()
+ls=m_n.split(" ")
+m=int(ls[0])
+n=int(ls[1])
+answer=(m*n)//2
+print(answer)
