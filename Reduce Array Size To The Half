@@ -1,0 +1,16 @@
+class Solution(object):
+    def minSetSize(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
+        c=Counter(arr)
+        n=len(arr)
+        f=0
+        output=0
+        for k,v in sorted(c.items(),key= lambda x: -x[1]):
+            f+=v
+            output+=1
+            if f>=n//2:
+                break
+        return output
