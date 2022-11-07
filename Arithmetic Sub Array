@@ -1,0 +1,28 @@
+class Solution(object):
+    def checkArithmeticSubarrays(self, nums, l, r):
+        """
+        :type nums: List[int]
+        :type l: List[int]
+        :type r: List[int]
+        :rtype: List[bool]
+        """
+        def is_arithmetic(lst):
+            n=len(lst)
+            if len(lst)<2:
+                return False
+            diff=lst[n-1]-lst[n-2]
+            while n>=2:
+                if lst[n-1]-lst[n-2]!=diff:
+                    return False
+                n-=1
+            return True
+        m=len(l)
+        arr=[True]*m
+        for i in range(m):
+            left=l[i]
+            right=r[i]
+            curr_num=nums[left:right+1]
+            curr_num.sort()
+            ans=is_arithmetic(curr_num)
+            arr[i]=ans
+        return arr
