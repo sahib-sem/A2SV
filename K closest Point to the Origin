@@ -1,0 +1,13 @@
+class Solution(object):
+    def kClosest(self, points, k):
+        heap=[]
+        for x,y in points:
+            ds=(x**2)+(y**2)
+            heap.append([ds,x,y])
+        heapq.heapify(heap)
+        arr=[]
+        while k>0:
+            ds,x,y=heapq.heappop(heap)
+            arr.append([x,y])
+            k-=1
+        return arr
