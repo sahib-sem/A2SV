@@ -1,0 +1,22 @@
+class Solution:
+    def longestMountain(self, arr: List[int]) -> int:
+        max_=0
+        n=len(arr)
+        i=0
+        res=1
+        while i<n-1:
+            if arr[i]<arr[i+1]:
+                small=arr[i]
+                while i<n-1 and arr[i]<arr[i+1]:
+                    i+=1
+                    res+=1
+                large=arr[i]
+                if i<n-1 and large>arr[i+1]:
+                    while i<n-1 and arr[i]>arr[i+1]:
+                        i+=1
+                        res+=1
+                    max_=max(max_,res)
+                res=1
+            else:
+                i+=1
+        return max_
