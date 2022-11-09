@@ -1,0 +1,17 @@
+class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+        max_=0
+        curr_count=0
+        voels=["a","e","i","o","u"]
+        st,e=0,0
+        while e<len(s):
+            if s[e] in voels:
+                curr_count+=1
+            if e-st+1==k:
+                max_=max(max_,curr_count)
+                if s[st] in voels:
+                    curr_count-=1
+                st+=1
+            e+=1
+        return max_
+        
