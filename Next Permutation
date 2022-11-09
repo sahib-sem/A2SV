@@ -1,0 +1,32 @@
+class Solution:
+    def nextPermutation(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        j=len(nums)-1
+        flag=True #check if nums is in descending order
+        while j>=1:
+            
+            if nums[j]>nums[j-1]: # if we find the last peak
+                flag=False # means the array is not in descending order 
+                lower_val=nums[j-1]
+                index=j-1
+                while j<len(nums)-1 and nums[j+1]>lower_val:
+                    j+=1
+
+
+                nums[j],nums[index]=nums[index],nums[j]
+                i=index+1
+                j=len(nums)-1
+                while j>i:
+                    nums[i],nums[j]=nums[j],nums[i]
+                    i+=1
+                    j-=1
+                break
+            j-=1
+        if flag:
+            i,j=0,len(nums)-1
+            while j>i:
+                nums[i],nums[j]=nums[j],nums[i]
+                i+=1
+                j-=1
