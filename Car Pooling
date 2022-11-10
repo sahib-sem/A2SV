@@ -1,0 +1,16 @@
+class Solution:
+    def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
+        ls=[]
+        for (num,start,end) in trips:
+            ls.append([start,1,num])
+            ls.append([end,0,num])
+        ls.sort(key=lambda i :(i[0],i[1]))
+        curr=0
+        for trips in ls:
+            if trips[1]==0:
+                curr-=trips[2]
+            else:
+                curr+=trips[2]
+            if curr>capacity:
+                return False
+        return True
